@@ -1,0 +1,36 @@
+
+
+.card-text{
+    color: green;
+    font-weight: 800;
+}
+.card-title{
+    font-weight: 900;
+}
+.btn_img{
+    
+   
+   background-color:#007bff;
+   
+   
+
+   /* border-color:darkcyan; */
+}
+
+.img_cls{
+  padding: 10px;
+  background-color: black;
+}
+
+.banner01{
+  margin-top: 50px;
+  background-color:lavender;
+}
+
+.main_pro{
+  font-family:'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+  font-size: xx-large;
+  align-items: center;
+  text-align: center;
+  margin: 20px 0px 20px 0px;
+}

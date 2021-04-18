@@ -1,0 +1,72 @@
+{% load static %}
+
+<!DOCTYPE html>
+
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+    
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+   
+    <script src="https://code.jquery.com/jquery-3.4.1.js" integrity="sha256-WpOohJOqMqqyKL9FccASB9O0KwACQJpFTUBLTYOVvVU=" crossorigin="anonymous"></script>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+    
+    <link rel="stylesheet" href="{% static 'shop/style.css' %}">
+
+</head>
+<body>
+
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12">
+                <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+                     
+                    <a class="navbar-brand" style="margin-left: 10px; margin-right: 50px;" href="{% url 'shop:index' %}">
+                    <img src="/static/shop/images/images.png" width="30" class="d-inline-block align-top"   alt=""> Shop Zone</a>
+                    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                    </button>
+                           
+                             
+                     <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
+                        <div class="navbar-nav" >
+                            <a class="nav-link active" href="{% url 'shop:index' %}">Home </a>
+                            <a class="nav-link" href="#">Features</a>
+                            <button id="cart" data-html="true" type="button" class="btn btn-secondary" data-container="body" data-toggle="popover" data-placement="bottom" data-content="">Cart(0)</button>
+                            
+                            {% if user.is_authenticated %}
+                                <div class="nav-link"> Hello, {{ user.username }} </div>
+                                <a href="{% url 'logout' %}" class="nav-link" >Logout</a>
+                                
+                            {% else %}
+                                <a href="{% url 'login' %}" class="nav-link"> Login </a> 
+                            {% endif %}
+                        </div>
+                      </div>
+                      
+                          
+                                         
+                </nav>
+                
+                {% if messages %}
+                    {% for message in messages %}
+                        <div class="alert alert-{{ message.tags }}" > 
+                            {{ message }} 
+                        </div>
+                    {% endfor %}    
+                {% endif %}
+               
+
+            </div>
+        </div>
+    </div>
+    {% block body %}
+    {% endblock %}
+    <script src="{% static 'shop/script.js' %}"> </script>
+</body>
+</html>
